@@ -1,6 +1,9 @@
 package datasets.io;
 
 /**
+ * forked from
+ * https://github.com/rajanim/selective-search project and
+ * https://github.com/wojtuch/20newsgroups-parser
  * per sub dir, per news, group (sub-dir-name) extract from: subject: news_id(dir_name_file_name), emails, telephones
  * //mentions
  * <p>
@@ -21,7 +24,7 @@ package datasets.io;
  * //top_authors
  * //top_mentions zset (name, times)
  * //unique users set
- * // top terms per topic -- each new sub dir is new topic, pick subject split by space, sorted set term, tf, df
+ * // top terms per topic -- each new sub dir is new topic, pick subject split by space, sorted set term, tf, df (terms statistics)
  */
 
 import java.io.BufferedReader;
@@ -43,12 +46,6 @@ public class NewsGroupsParser {
                 for (Map.Entry<String, String> stringStringEntry : a.getArticleMetadata().entrySet()) {
                     System.out.println(stringStringEntry.getKey() + "," + stringStringEntry.getValue());
                 }
-               /* Date d = a.getDate();
-                if (d == null) {
-                    System.out.println("\t" + a.getArticleId());
-                    System.out.println("\t" + a.getHeader("Subject"));
-                    System.out.println("\t" + a.getHeader("From"));
-                }*/
             });
         });
 
